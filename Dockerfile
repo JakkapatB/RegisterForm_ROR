@@ -17,17 +17,17 @@ ENV RAILS_ENV="production" \
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
-# Install packages needed to build gems
+# Install packages needed to build gems for Alpine
 RUN apk add --no-cache \
     build-base \
     git \
-    libvips-dev \
+    vips-dev \
     sqlite-dev \
     postgresql-dev \
-    tzdata \
     bash \
     curl \
-    pkgconfig
+    pkgconfig \
+    tzdata
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
@@ -50,7 +50,7 @@ FROM base
 
 # Install packages needed for deployment
 RUN apk add --no-cache \
-    libvips \
+    vips \
     sqlite-libs \
     postgresql-libs
 
