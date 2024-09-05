@@ -23,7 +23,6 @@ RUN apk add --no-cache \
     git \
     vips-dev \
     sqlite-dev \
-    postgresql-dev \
     bash \
     curl \
     pkgconfig \
@@ -51,20 +50,18 @@ FROM base
 # Install packages needed for deployment
 RUN apk add --no-cache \
     vips \
-    sqlite-libs \
-    postgresql-libs
+    sqlite-libs
 
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
+# Make sure entrypoint is executable
+RUN chmod +x /rails/bin/docker-entrypoint
+
 # Run and own only the runtime files as a non-root user for security
 RUN adduser -D -g '' rails && \
     chown -R rails:rails db log storage tmp
-
-RUN chmod +x /rails/bin/docker-entrypoint
-
-
 USER rails:rails
 
 # Entrypoint prepares the database.
@@ -72,4 +69,4 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+CMD ["bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0"]
