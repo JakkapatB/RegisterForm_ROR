@@ -36,7 +36,10 @@ class UserRegistersController < ApplicationController
   def update
   end
 
-  def delete
+  def destroy
+    @user_register = UserRegister.find(params[:id])
+    @user_register.destroy
+    redirect_to user_registers_path, notice: 'User was successfully destroyed.'
   end
   private
   def user_register_params
