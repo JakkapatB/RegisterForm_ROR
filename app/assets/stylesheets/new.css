@@ -96,6 +96,7 @@ body {
   cursor: pointer;
 }
 .delete {
+  margin-top: 1rem;
   background-color: #dc3545;
 }
 @media (max-width: 914px) {
@@ -106,11 +107,6 @@ body {
   }
 }
 @media (max-width: 486px) {
-  body {
-    background: white;
-    background-attachment: fixed;
-    height: 100vh;
-  }
   .contener-content {
     width: 100%;
   }

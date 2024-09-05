@@ -33,9 +33,6 @@ class UserRegistersController < ApplicationController
     end
   end
 
-  def update
-  end
-
   def destroy
     @user_register = UserRegister.find(params[:id])
     @user_register.destroy
