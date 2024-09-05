@@ -1,6 +1,6 @@
 <div class="content-user">
     <h1>User Information Lists</h1>
-    <%= button_to 'Create New User', new_user_register_path, method: :get, class: 'btn-primary' %>    
+    <%= button_to 'Create New User', new_user_register_path, method: :get, class: 'button-style' %>    
     <div class="grid-content">
         <% @user_registers.each do |user_register| %>
          <div class="card">
@@ -34,7 +34,8 @@
                     <p class="sub-text"><%= user_register.subject%></p>
                 </div>
                 <div class="btn-grop">
-                    <%= button_to 'Delete', user_register_path(user_register), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-primary' %>
+                    <%= button_to 'Delete', user_register_path(user_register), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button-style delete' %>
+                </div>
             </div>
          </div>
         <% end %>

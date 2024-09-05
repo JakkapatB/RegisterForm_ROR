@@ -5,10 +5,18 @@
   align-items: center;
   gap: 2rem;
   margin: 2rem 0;
-  & > h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: white;
+  & > .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    & > h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+    }
   }
 }
 .grid-content {
@@ -48,4 +56,13 @@
 .sub-text {
   font-size: 0.8rem;
   color: rgb(48, 48, 48);
+}
+.button-delete-style {
+  padding: 0.4rem 2rem;
+  color: white;
+  background-color: #e82323;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
 }
