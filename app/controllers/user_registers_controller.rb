@@ -1,6 +1,15 @@
 class UserRegistersController < ApplicationController
   def new
     @user_register = UserRegister.new
+    @subjects = [
+      ['Choose option', "", {disabled: true, selected: true}],
+      ["Mathematics", "math"],
+      ["Science", "science"],
+      ["History", "history"],
+      ["English", "english"],
+      ["Art", "art"],
+      ["Computer Science", "cs"]
+    ]
   end
 
   def create
@@ -8,6 +17,14 @@ class UserRegistersController < ApplicationController
     if @user_register.save
       redirect_to root_path, notice: 'User was successfully created.'
     else
+      @subjects = [
+      ["Mathematics", "math"],
+      ["Science", "science"],
+      ["History", "history"],
+      ["English", "english"],
+      ["Art", "art"],
+      ["Computer Science", "cs"]
+    ]
       render :new
     end
   end

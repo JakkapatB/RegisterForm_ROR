@@ -41,7 +41,7 @@
         <div class="row-form">
           <div class="form-content">
             <%= form.label :subject, "Subject",class: "form-label"%>
-            <%= form.select :subject, ['Math', 'Science', 'History', 'English'],{},class: "form-input" %>
+            <%= form.select :subject, options_for_select(@subjects),{},class: "form-input" %>
           </div>
         </div>
         <div>
