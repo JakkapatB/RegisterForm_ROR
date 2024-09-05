@@ -1,43 +1,53 @@
-<div>
-
-<div>
-<h1>Register Form</h1>
-
-<%= form_with model: @user_register, local: true do |form|%>
-    <div>
-        <%= form.label :first_name, "First Name"%>
-        <%= form.text_field :first_name %>
-    </div>
-    <div>
-        <%= form.label :last_name, "Last Name"%>
-        <%= form.text_field :last_name %>
-    </div>
-    <div>
-        <%= form.label :birthday, "Birthday"%>
-        <%= form.date_field :birthday %>
-    </div>
-    <div>
-        <%= form.label :gender, "Gender"%>
-        <%= form.radio_button :gender, 'male' %>
-        <%= form.label :gender_male, "Male" %>
-         <%= form.radio_button :gender, 'female' %>
-         <%= form.label :gender_female, "Female" %>
-    </div>
-    <div>
-        <%= form.label :email, "Email"%>
-        <%= form.email_field :email %>
-    </div>
+<div class="body">
+  <div class="contener-content">
+    <div class="form-style">
+      <h1>Register Form</h1>
+      <%= form_with model: @user_register, local: true, html: {class: 'form-regis'} do |form|%>
+        <div class="row-form">
+          <div class="form-content">
+            <%= form.label :first_name, "First Name", class: "form-label"%>
+            <%= form.text_field :first_name, class: "form-input" %>
+          </div>
+          <div class="form-content">
+            <%= form.label :last_name, "Last Name", class: "form-label"%>
+            <%= form.text_field :last_name, class: "form-input" %>
+          </div>
+        </div>
+        <div class="row-form">
+          <div class="form-content">
+            <%= form.label :birthday, "Birthday", class: "form-label"%>
+            <%= form.date_field :birthday, class: "form-input" %>
+          </div>
+          <div class="form-content">
+            <%= form.label :gender, "Gender", class: "form-label"%>
+            <div class="form-radio-group">
+              <%= form.radio_button :gender, "male",class: 'form-radio' %>
+              <%= form.label :gender_male, "Male",class: 'form-radio-label' %>
+              <%= form.radio_button :gender, "female",class: 'form-radio' %>
+              <%= form.label :gender_female, "Female",class: 'form-radio-label' %>
+            </div>
+          </div>
+        </div>
+        <div class="row-form">
+          <div class="form-content">
+            <%= form.label :email, "Email", class: "form-label"%>
+            <%= form.email_field :email, class: "form-input" %>
+          </div>
+          <div class="form-content">
+            <%= form.label :phone_number, "Phone Number", class: "form-label"%>
+            <%= form.telephone_field :phone_number, class: "form-input" %>
+          </div>
+        </div>
+        <div class="row-form">
+          <div class="form-content">
+            <%= form.label :subject, "Subject",class: "form-label"%>
+            <%= form.select :subject, ['Math', 'Science', 'History', 'English'],{},class: "form-input" %>
+          </div>
+        </div>
         <div>
-        <%= form.label :phone_number, "Phone Number"%>
-        <%= form.telephone_field :phone_number %>
+          <%= form.submit "Submit", class: "button-style"%>
+        </div>
+      <% end %>
     </div>
-    <div>
-        <%= form.label :subject, "Subject"%>
-        <%= form.select :subject, ['Math', 'Science', 'History', 'English'] %>
-    </div>
-    <div>
-        <%= form.submit "Submit"%>
-    </div>
-<% end %>
-</div>
+  </div>
 </div>
