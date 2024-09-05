@@ -1,3 +1,3 @@
 class UserRegister < ApplicationRecord
-
+ 
 end
