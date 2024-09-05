@@ -57,7 +57,8 @@ COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
 # Make sure entrypoint is executable
-RUN chmod +x /rails/bin/docker-entrypoint
+COPY entrypoint.sh /usr/bin/entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint.sh
 
 # Run and own only the runtime files as a non-root user for security
 RUN adduser -D -g '' rails && \
@@ -65,8 +66,8 @@ RUN adduser -D -g '' rails && \
 USER rails:rails
 
 # Entrypoint prepares the database.
-# ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "db:prepare", "&&", "./bin/rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0"]
