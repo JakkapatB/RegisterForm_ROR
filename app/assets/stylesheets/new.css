@@ -98,6 +98,7 @@ body {
 .delete {
   margin-top: 1rem;
   background-color: #dc3545;
+  width: 100%;
 }
 @media (max-width: 914px) {
   .contener-content {
