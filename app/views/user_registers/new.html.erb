@@ -1,2 +1,43 @@
-<h1>UserRegisters#new</h1>
-<p>Find me in app/views/user_registers/new.html.erb</p>
+<div>
+
+<div>
+<h1>Register Form</h1>
+
+<%= form_with model: @user_register, local: true do |form|%>
+    <div>
+        <%= form.label :first_name, "First Name"%>
+        <%= form.text_field :first_name %>
+    </div>
+    <div>
+        <%= form.label :last_name, "Last Name"%>
+        <%= form.text_field :last_name %>
+    </div>
+    <div>
+        <%= form.label :birthday, "Birthday"%>
+        <%= form.date_field :birthday %>
+    </div>
+    <div>
+        <%= form.label :gender, "Gender"%>
+        <%= form.radio_button :gender, 'male' %>
+        <%= form.label :gender_male, "Male" %>
+         <%= form.radio_button :gender, 'female' %>
+         <%= form.label :gender_female, "Female" %>
+    </div>
+    <div>
+        <%= form.label :email, "Email"%>
+        <%= form.email_field :email %>
+    </div>
+        <div>
+        <%= form.label :phone_number, "Phone Number"%>
+        <%= form.telephone_field :phone_number %>
+    </div>
+    <div>
+        <%= form.label :subject, "Subject"%>
+        <%= form.select :subject, ['Math', 'Science', 'History', 'English'] %>
+    </div>
+    <div>
+        <%= form.submit "Submit"%>
+    </div>
+<% end %>
+</div>
+</div>
