@@ -13,17 +13,15 @@ ENV RAILS_ENV="production" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
 
-
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
-# Install packages needed to build gems for Alpine
-RUN apk add --no-cache \
+# Install necessary build dependencies in a single layer
+RUN apk add --no-cache --virtual .build-deps \
     build-base \
     git \
     vips-dev \
     sqlite-dev \
-    postgresql-dev \
     bash \
     curl \
     pkgconfig \
@@ -44,27 +42,27 @@ RUN bundle exec bootsnap precompile app/ lib/
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
-
 # Final stage for app image
 FROM base
 
-# Install packages needed for deployment
+# Install minimal runtime dependencies in a single layer
 RUN apk add --no-cache \
     vips \
-    sqlite-libs \
-    postgresql-libs
+    sqlite-libs && \
+    rm -rf /var/cache/apk/*
+
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
+
+# Make sure entrypoint is executable
+RUN chmod +x /rails/bin/docker-entrypoint
 
 # Run and own only the runtime files as a non-root user for security
 RUN adduser -D -g '' rails && \
     chown -R rails:rails db log storage tmp
 USER rails:rails
 
-# Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+CMD ["bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0"]
