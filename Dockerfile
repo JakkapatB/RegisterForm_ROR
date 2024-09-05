@@ -52,10 +52,8 @@ FROM base
 RUN apk add --no-cache \
     vips \
     sqlite-libs \
-    postgresql-libs
-
-# Copy built artifacts: gems, application
-COPY --from=build /usr/local/bundle /usr/local/bundle
+    # Copy built artifacts: gems, application
+    COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
 # Run and own only the runtime files as a non-root user for security
