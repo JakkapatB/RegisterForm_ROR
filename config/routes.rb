@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   root 'user_registers#new'
-  resources :user_registers, only: [:new, :create, :update, :delete]
+  resources :user_registers
 end

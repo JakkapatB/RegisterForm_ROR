@@ -1,4 +1,7 @@
 class UserRegistersController < ApplicationController
+  def index 
+    @user_registers = UserRegister.all
+  end
   def new
     @user_register = UserRegister.new
     @subjects = [
@@ -15,9 +18,10 @@ class UserRegistersController < ApplicationController
   def create
     @user_register = UserRegister.new(user_register_params)
     if @user_register.save
-      redirect_to root_path, notice: 'User was successfully created.'
+      redirect_to user_registers_path, notice: 'User was successfully created.'
     else
       @subjects = [
+      ['Choose option', "", {disabled: true, selected: true}],
       ["Mathematics", "math"],
       ["Science", "science"],
       ["History", "history"],

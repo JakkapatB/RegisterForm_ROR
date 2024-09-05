@@ -1,0 +1,29 @@
+<div class="content-user">
+    <h1>User Infomation Lists</h1>
+    <div class="grid-content">
+        <% @user_registers.each do |user_register| %>
+         <div class="card">
+            <div class="logo-card">
+                <%= image_tag 'ODT.svg', alt: 'User Image', class: 'card-image' %>
+            </div>
+            <div class="card-info">
+                <div class="card-content">
+                    <span><%= user_register.first_name%></span>
+                    <span><%= user_register.last_name%></span>
+                </div>
+                <div class="card-content">
+                    <p><%= user_register.birthday%></p>
+                    <p><%= user_register.gender%></p>
+                </div>
+                <div class="card-content">
+                    <p><%= user_register.email%></p>
+                    <p><%= user_register.phone_number%></p>
+                </div>
+                <div class="card-content">
+                    <p><%= user_register.subject%></p>
+                </div>
+            </div>
+         </div>
+        <% end %>
+    </div>
+</div>
