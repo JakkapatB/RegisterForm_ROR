@@ -23,6 +23,7 @@ RUN apk add --no-cache \
     git \
     vips-dev \
     sqlite-dev \
+    postgresql-dev \
     bash \
     curl \
     pkgconfig \
@@ -50,8 +51,8 @@ FROM base
 # Install packages needed for deployment
 RUN apk add --no-cache \
     vips \
-    sqlite-libs
-
+    sqlite-libs \
+    postgresql-libs
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
