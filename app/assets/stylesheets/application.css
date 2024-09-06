@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+* {
+  font-family: sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #ffcf67, #d3321d);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-y: auto;
+  font-family: sans-serif;
+}
