@@ -6,12 +6,11 @@ class UserRegistersController < ApplicationController
     @user_register = UserRegister.new
     @subjects = [
       ['Choose option', "", {disabled: true, selected: true}],
-      ["Mathematics", "math"],
-      ["Science", "science"],
-      ["History", "history"],
-      ["English", "english"],
-      ["Art", "art"],
-      ["Computer Science", "cs"]
+      ["Scrum", "Scrum"],
+      ["Ruby on Rails", "Ruby on Rails"],
+      ["TDD", "TDD"],
+      ["CSS", "CSS"],
+      ["Storytelling", "Storytelling"],
     ]
   end
 
@@ -20,14 +19,13 @@ class UserRegistersController < ApplicationController
     if @user_register.save
       redirect_to user_registers_path, notice: 'User was successfully created.'
     else
-      @subjects = [
+    @subjects = [
       ['Choose option', "", {disabled: true, selected: true}],
-      ["Mathematics", "math"],
-      ["Science", "science"],
-      ["History", "history"],
-      ["English", "english"],
-      ["Art", "art"],
-      ["Computer Science", "cs"]
+      ["Scrum", "Scrum"],
+      ["Ruby on Rails", "Ruby on Rails"],
+      ["TDD", "TDD"],
+      ["CSS", "CSS"],
+      ["Storytelling", "Storytelling"],
     ]
       render :new
     end
