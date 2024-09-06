@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Register-Ruby-on-Rails</title>
+    <title>Register-ROR</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
-    <link rel="apple-touch-icon" href="app/assets/images/ODT.svg">
+    <link rel="icon" href="<%= asset_path 'pen.png' %>" type="image/x-icon">
   </head>
   <body>
     <%= yield %>
