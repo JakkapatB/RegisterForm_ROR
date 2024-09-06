@@ -39,6 +39,6 @@ jobs:
           EC2_HOST: ${{ secrets.EC2_HOST }}
           EC2_USER: ${{ secrets.EC2_USER }}
         run: |
-          cd /path/to/your/project
+          cd /jakkapat-ror-deploy
           docker-compose pull
           docker-compose up -d
