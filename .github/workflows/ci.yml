@@ -42,6 +42,7 @@ jobs:
           username: ${{ secrets.AWS_EC2_USER }}
           key: ${{ secrets.AWS_EC2_SSH_KEY }}
           script: |
+            cd jakkapat-ror-deploy
             sudo docker compose down
             sudo docker system prune -a
             sudo docker compose pull
