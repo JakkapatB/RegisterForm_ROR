@@ -37,8 +37,8 @@ jobs:
       - name: Deploy to EC2 AWS
         uses: appleboy/ssh-action@v0.1.4
         with:
-          host: ${{ secrets.AWS_EC2_HOST }}
-          username: ${{ secrets.AWS_EC2_USER }}
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.AWS_EC2_SSH_KEY }}
           script: |
             cd jakkapat-ror-deploy
