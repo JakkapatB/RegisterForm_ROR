@@ -44,10 +44,6 @@
   gap: 1rem;
 }
 .form-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
   flex: 1;
 }
 .form-label {
@@ -68,6 +64,8 @@
   box-sizing: border-box;
 }
 .form-radio-group {
+  display: flex;
+  flex-direction: row;
   padding: 10px 0;
   border-radius: 4px;
   flex: 1;
@@ -92,9 +90,27 @@
   cursor: pointer;
 }
 .delete {
+  text-align: center;
+  text-decoration: none;
   margin-top: 1rem;
   background-color: #dc3545;
   width: 100%;
+}
+.cancel {
+  text-decoration: none;
+  background-color: #bfbfbf;
+}
+
+.error-messages {
+  color: red;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  min-height: 1rem;
+  visibility: hidden;
+}
+.error-messages.has-error {
+  visibility: visible;
 }
 @media (max-width: 914px) {
   .contener-content {
@@ -128,6 +144,8 @@
   }
 
   .button-style {
+    margin-top: 1rem;
+    z-index: 1;
     width: 100%;
     padding: 0.75rem;
     font-size: 0.875rem;

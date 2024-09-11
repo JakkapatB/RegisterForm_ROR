@@ -1,6 +1,7 @@
 class UserRegistersController < ApplicationController
   def index 
     @user_registers = UserRegister.all
+    @user_register = UserRegister.new  
   end
   def new
     @user_register = UserRegister.new
@@ -27,14 +28,22 @@ class UserRegistersController < ApplicationController
       ["CSS", "CSS"],
       ["Storytelling", "Storytelling"],
     ]
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
-  def destroy
+
+def confirm_delete
+  @user_register = UserRegister.find(params[:id])
+  render partial: 'modal/confirm_delete', locals: { user_register: @user_register }
+end
+
+def destroy
     @user_register = UserRegister.find(params[:id])
     @user_register.destroy
-    redirect_to user_registers_path, notice: 'User was successfully destroyed.'
-  end
+    respond_to do |format|
+      format.html { redirect_to user_registers_path, notice: 'User was successfully deleted.' }
+    end
+end
   private
   def user_register_params
     params.require(:user_register).permit(:first_name, :last_name, :birthday, :gender, :email, :phone_number, :subject)

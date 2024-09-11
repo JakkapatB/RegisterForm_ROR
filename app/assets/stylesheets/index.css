@@ -51,6 +51,11 @@
   font-size: 0.8rem;
   color: rgb(48, 48, 48);
 }
+.btn-grop {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
 
 @media (min-width: 2000px) {
   .grid-content {

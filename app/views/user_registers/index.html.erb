@@ -1,43 +1,8 @@
-<div class="content-user" >
-    <h1>User Information Lists</h1>
-    <%= button_to 'Register User', new_user_register_path, method: :get, class: 'button-style' %>    
-    <div class="grid-content">
-        <% @user_registers.each do |user_register| %>
-         <div class="card">
-            <div class="logo-card">
-                <%= image_tag 'ODT.svg', alt: 'User Image', class: 'card-image' %>
-            </div>
-            <div class="card-info">
-                <div class="card-content">
-                    <span class="head-text">Name:</span>
-                    <p class="sub-text"><span><%= user_register.first_name%></span>
-                    <span><%= user_register.last_name%></span></p>
-                </div>
-                <div class="card-content">
-                    <span class="head-text">Birthday:</span>
-                    <p class="sub-text"><%= user_register.birthday%></p>
-                </div>
-                <div class="card-content">
-                    <span class="head-text">Gender:</span>
-                    <p class="sub-text"><%= user_register.gender%></p>
-                </div>
-                <div class="card-content">
-                    <span class="head-text">Email:</span>
-                    <p class="sub-text"><%= user_register.email%></p>
-                </div>
-                <div class="card-content"> 
-                    <span class="head-text">Phone Number:</span>
-                    <p class="sub-text"><%= user_register.phone_number%></p>
-                </div>
-                <div class="card-content">
-                    <span class="head-text">Subject:</span>
-                    <p class="sub-text"><%= user_register.subject%></p>
-                </div>
-                <div class="btn-grop">
-                    <%= button_to 'Delete', user_register_path(user_register), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button-style delete' %>
-                </div>
-            </div>
-         </div>
-        <% end %>
-    </div>
+<div class="content-user">
+  <h1>User Information Lists</h1>
+  <%= button_to 'Register User', new_user_register_path, method: :get, class: 'button-style' %>
+  <%= turbo_frame_tag "grid-conent" do %>
+    <%= render "gridCardInfo"%>
+  <% end %>
 </div>
+<%= turbo_frame_tag "modal" do %><%end%>

@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "modal" do %>
+  <div class="modal-style">
+    <div class="box-style">
+      <h1>Confirm Delete</h1>
+      <p>Are you sure you want to delete <%= @user_register.first_name %>?</p>
+      <%= button_to 'Yes, Delete', user_register_path(@user_register), method: :delete, data: { turbo_frame: '_top' }, class: 'button-style delete' %>
+      <%= link_to 'Cancel', '#', class: 'button-style cancel', data: { action: 'modal#close' } %>
+    </div>
+  </div>
+<% end %>

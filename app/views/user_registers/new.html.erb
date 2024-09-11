@@ -7,16 +7,31 @@
           <div class="form-content">
             <%= form.label :first_name, "First Name", class: "form-label"%>
             <%= form.text_field :first_name, class: "form-input" %>
+            <div class="error-messages <%= 'has-error' if @user_register.errors[:first_name].any? %>">
+              <% @user_register.errors.full_messages_for(:first_name).each do |message| %>
+                <div class="error-message"><%= message %></div>
+              <% end %>
+            </div>
           </div>
           <div class="form-content">
             <%= form.label :last_name, "Last Name", class: "form-label"%>
             <%= form.text_field :last_name, class: "form-input" %>
+            <div class="error-messages <%= 'has-error' if @user_register.errors[:last_name].any? %>">
+              <% @user_register.errors.full_messages_for(:last_name).each do |message| %>
+                <div class="error-message"><%= message %></div>
+              <% end %>
+            </div>
           </div>
         </div>
         <div class="row-form">
           <div class="form-content">
             <%= form.label :birthday, "Birthday", class: "form-label"%>
             <%= form.date_field :birthday, class: "form-input" %>
+            <div class="error-messages <%= 'has-error' if @user_register.errors[:birthday].any? %>">
+              <% @user_register.errors.full_messages_for(:birthday).each do |message| %>
+                <div class="error-message"><%= message %></div>
+              <% end %>
+            </div>
           </div>
           <div class="form-content">
             <%= form.label :gender, "Gender", class: "form-label"%>
@@ -26,26 +41,46 @@
               <%= form.radio_button :gender, "female",class: 'form-radio' %>
               <%= form.label :gender_female, "Female",class: 'form-radio-label' %>
             </div>
+            <div class="error-messages <%= 'has-error' if @user_register.errors[:gender].any? %>">
+              <% @user_register.errors.full_messages_for(:gender).each do |message| %>
+                <div class="error-message"><%= message %></div>
+              <% end %>
+            </div>
           </div>
         </div>
         <div class="row-form">
           <div class="form-content">
             <%= form.label :email, "Email", class: "form-label"%>
             <%= form.email_field :email, class: "form-input" %>
+            <div class="error-messages <%= 'has-error' if @user_register.errors[:email].any? %>">
+              <% @user_register.errors.full_messages_for(:email).each do |message| %>
+                <div class="error-message"><%= message %></div>
+              <% end %>
+            </div>
           </div>
           <div class="form-content">
             <%= form.label :phone_number, "Phone Number", class: "form-label"%>
             <%= form.telephone_field :phone_number, class: "form-input" %>
+            <div class="error-messages <%= 'has-error' if @user_register.errors[:phone_number].any? %>">
+              <% @user_register.errors.full_messages_for(:phone_number).each do |message| %>
+                <div class="error-message"><%= message %></div>
+              <% end %>
+            </div>
           </div>
         </div>
         <div class="row-form">
           <div class="form-content">
             <%= form.label :subject, "Subject",class: "form-label"%>
             <%= form.select :subject, options_for_select(@subjects),{},class: "form-input" %>
+            <div class="error-messages <%= 'has-error' if @user_register.errors[:subject].any? %>">
+              <% @user_register.errors.full_messages_for(:subject).each do |message| %>
+                <div class="error-message"><%= message %></div>
+              <% end %>
+            </div>
           </div>
         </div>
         <div>
-          <%= form.submit "Submit", class: "button-style"%>
+          <%= form.submit "Submit", class: "button-style" %>
         </div>
       <% end %>
     </div>
