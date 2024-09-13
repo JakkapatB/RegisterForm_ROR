@@ -97,8 +97,10 @@
   width: 100%;
 }
 .cancel {
+  max-width: 70px;
   text-decoration: none;
   background-color: #bfbfbf;
+  text-align: center;
 }
 
 .error-messages {
@@ -144,7 +146,6 @@
   }
 
   .button-style {
-    margin-top: 1rem;
     z-index: 1;
     width: 100%;
     padding: 0.75rem;

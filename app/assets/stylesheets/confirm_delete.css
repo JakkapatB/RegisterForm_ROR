@@ -27,3 +27,8 @@
   width: 80%;
   max-width: 480px;
 }
+@media (max-width: 480px) {
+  .box-style {
+    text-align: center;
+  }
+}
